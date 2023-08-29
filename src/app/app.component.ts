@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Logger } from './logger/logger.service';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
@@ -9,5 +10,9 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'logger';
+  private readonly logger = inject(Logger);
+
+  constructor() {
+    this.logger.log('AppComponent created');
+  }
 }
